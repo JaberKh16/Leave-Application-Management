@@ -31,6 +31,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     Route::get('user/leave', [LeaveController::class, 'create'])->name('user.leave-form');
     Route::post('user/leave/submit', [LeaveController::class, 'store'])->name('user.leave-submit');
+    Route::get('user/leave/records', [LeaveController::class, 'index'])->name('user.leave-records');
+    Route::get('user/leave/records/delete/{id}', [LeaveController::class, 'destroy'])->name('category.delete');
   
 });
 

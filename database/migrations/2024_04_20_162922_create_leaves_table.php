@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();
             $table->string('reason_leave')->nullable();
+            $table->string('user_id')->nullable();
+            $table->enum('review_status', ['active', 'inactive'])->default('inactive');
             $table->timestamps();
         });
     }

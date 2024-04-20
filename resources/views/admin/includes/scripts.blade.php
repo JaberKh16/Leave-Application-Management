@@ -15,6 +15,30 @@
 <script src="{{ asset('assets/modules/summernote/summernote-bs4.js')}}"></script>
 <script src="{{ asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
 
+<!-- DatePicker S Libraries -->
+<script src="{{ asset('assets/modules/cleave-js/dist/cleave.min.js') }}"></script>
+<script src="{{ asset('assets/modules/cleave-js/dist/addons/cleave-phone.us.js') }}"></script>
+<script src="{{ asset('assets/modules/jquery-pwstrength/jquery.pwstrength.min.js') }}"></script>
+<script src="{{ asset('assets/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('assets/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+<script src="{{ asset('assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
+<script src="{{ asset('assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+<script src="{{ asset('assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
+
+<!-- Page Specific JS File -->
+<script src="{{ asset('assets/js/page/components-table.js')}}"></script>
+
+<!-- JS Libraries -->
+<script src="{{ asset('assets/modules/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
+<script src="{{ asset('assets/modules/jquery-ui/jquery-ui.min.js') }}"></script>
+
+<!-- Page Specific JS File -->
+{{-- <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script> --}}
+
+
 <!-- Page Specific JS File -->
 <script src="{{ asset('assets/js/page/index-0.js')}}"></script>
 

@@ -11,7 +11,8 @@
     <li class="dropdown">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Pages</span></a>
         <ul class="dropdown-menu">
-        <li><a class="nav-link" href="{{ route('user.leave-form') }}">Leave Request</a></li>
+        <li><a class="nav-link" href="{{ route('user.leave-form') }}">Leave Request Form</a></li>
+        <li><a class="nav-link" href="{{ route('user.leave-records') }}">Leave Records</a></li>
         </ul>
     </li>
 </div>

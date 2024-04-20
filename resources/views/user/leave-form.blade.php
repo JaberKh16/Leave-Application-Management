@@ -56,6 +56,8 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
+                <input type="text" style="display: none; " name="user_id" value="{{ Auth::id() }}">
+
             </div>
         </form>
     </div>
