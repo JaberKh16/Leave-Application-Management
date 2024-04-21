@@ -7,9 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel-Advance-ECommerce
+## About Leave-Application-Project
 
-It is a Laravel 8 blade template based demo project reflecting advance features of a single vendor ecommerce platform. Build with love and open source for developers.
+It is a Laravel 8 blade template based demo project reflecting features of a leave application platform. Build with love and open source for developers.
 
 1. Bootstrap 5.0
 2. laravel/breeze
