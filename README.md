@@ -13,7 +13,7 @@ It is a Laravel 8 blade template based demo project reflecting features of a lea
 
 1. Bootstrap 5.0
 2. laravel/breeze
-3. laravel/sanctums
+3. laravel/sanctum
 4. Sweet Alert 2.0
 5. Notification Alert -Toastr
 6. Datatables
