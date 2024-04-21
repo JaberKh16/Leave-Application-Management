@@ -47,7 +47,7 @@
                                     <td>{{ $record->leave_type }}</td>
                                     <td>{{ $record->start_date }}</td>
                                     <td>{{ $record->end_date }}</td>
-                                    <td>{{ $record->reason_leave }}</td>
+                                    <td>{{ strip_tags($record->reason_leave) }}</td>
                                     <td><span class="badge badge-success">{{ $record->review_status }}</span></td>
                                     {{-- <td>{{ $record->comments }}</td> --}}
                                     {{-- <td><a href="#" class="btn btn-secondary">Detail</a></td> --}}
