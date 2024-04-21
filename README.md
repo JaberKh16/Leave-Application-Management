@@ -9,7 +9,7 @@
 
 ## About Leave-Application-Project
 
-It is a Laravel 8 blade template based demo project reflecting features of a leave application platform. Build with love and open source for developers.
+It is a Laravel 10 blade template based demo project reflecting features of a leave application platform. Build with love and open source for developers.
 
 1. Bootstrap 5.0
 2. laravel/breeze
