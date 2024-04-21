@@ -10,7 +10,18 @@ use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
     public function dashboard(){
-        return view('admin.dashboard');
+        $count_records = $this->total_counts();
+        $user_records = $count_records[0];
+        $leave_records = $count_records[1];
+        return view('admin.dashboard', compact('user_records', 'leave_records'));
+    }
+
+    public function total_counts()
+    {
+        $user_records = DB::table('users')->select('*')->count();
+        $leave_records = DB::table('leaves')->select('*')->count();
+        $count_records = [ $user_records, $leave_records ];
+        return $count_records;
     }
 
     public function user_manage(){
@@ -40,9 +51,23 @@ class AdminController extends Controller
         
         $update = DB::table($table)->where('id', $id)->update($fields);
         if ($update != null) {
-            $action = ($value == 'active') ? 'activated' : 'inactivated';
+            $action = ($value == 'active') ? 'Approved' : 'Rejected';
             Log::info($update);
-            return redirect()->back()->with('success',"Record has been successfully " . $action);
+            return redirect()->back()->with('success',"Record has been successfully -" . $action);
+        } else {
+            return redirect()->back()->with('error',"Something went wrong, please try again");
+        }
+    }
+
+    public function update_user_status($table, $id, $value)
+    {
+        $fields = array('register_status' => $value);
+        
+        $update = DB::table($table)->where('id', $id)->update($fields);
+        if ($update != null) {
+            $action = ($value == 'active') ? 'Approved' : 'Rejected';
+            Log::info($update);
+            return redirect()->back()->with('success',"Record has been successfully -" . $action);
         } else {
             return redirect()->back()->with('error',"Something went wrong, please try again");
         }

@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin-layout')
 
 @section('user-content')
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @if (session()->has('success'))
     <script>
         Swal.fire({
@@ -53,9 +53,9 @@
                                 <td>{{ $record->reason_leave }}</td>
                                 <td>
                                     @if ($record->review_status === 'active')
-                                        <span class="badge badge-success">{{ $record->review_status }}</span>
+                                        <span class="badge badge-success pt-2 pb-2 ps-4 pe-4">{{ $record->review_status }}</span>
                                     @else
-                                    <span class="badge badge-danger">{{ $record->review_status }}</span>
+                                    <span class="badge badge-danger pt-2 pb-2 ps-4 pe-4">{{ $record->review_status }}</span>
                                     @endif
                                 </td>
                                 <td>

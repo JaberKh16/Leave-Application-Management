@@ -46,7 +46,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('user/management/records', [AdminController::class, 'user_manage'])->name('admin.user-role');
     Route::get('user/leave/manage/records', [AdminController::class, 'leave_manage'])->name('admin.user-leave');
     Route::get('user/leave/manage/records/update-status/{table}/{id}/{value}', [AdminController::class, 'update_leave_status'])->name("update-status");
-    
+    Route::get('user/manage/records/update-user-status/{table}/{id}/{value}', [AdminController::class, 'update_user_status'])->name("update-user-status");
 });
 
 Route::middleware('auth')->group(function () {

@@ -37,6 +37,7 @@
             <h1>Dashboard</h1>
           </div>
           {{-- box section --}}
+          @yield('count-content')
           @yield('user-content')
           {{-- draft section --}}
         </section>
