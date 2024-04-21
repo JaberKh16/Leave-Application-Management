@@ -57,7 +57,7 @@ yarn install && yarn run dev
 7. After connecting the db with project, then run command
 
 ```sh
-php artisan migrate:fresh --seed
+php artisan db:seed
 ```
 
 After completing the migration and seeding of db, you will have 2 user ready for login in this project.
