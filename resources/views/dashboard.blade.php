@@ -14,5 +14,5 @@
             </div>
         </div>
     </div> --}}
-    @extends('layouts.app')
+    {{-- @extends('layouts.app') --}}
 </x-app-layout>
