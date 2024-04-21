@@ -48,7 +48,14 @@
                                     <td>{{ $record->start_date }}</td>
                                     <td>{{ $record->end_date }}</td>
                                     <td>{{ strip_tags($record->reason_leave) }}</td>
-                                    <td><span class="badge badge-success">{{ $record->review_status }}</span></td>
+                                    {{-- <td><span class="badge badge-success">{{ $record->review_status }}</span></td> --}}
+                                    <td>
+                                        @if ($record->review_status === 'active')
+                                            <span class="badge badge-success pt-2 pb-2 ps-4 pe-4">{{ $record->review_status }}</span>
+                                        @else
+                                            <span class="badge badge-danger pt-2 pb-2 ps-4 pe-4">{{ $record->review_status }}</span>
+                                        @endif
+                                    </td>
                                     {{-- <td>{{ $record->comments }}</td> --}}
                                     {{-- <td><a href="#" class="btn btn-secondary">Detail</a></td> --}}
                                 </tr>
