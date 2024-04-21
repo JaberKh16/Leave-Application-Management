@@ -11,7 +11,7 @@
 
 It is a Laravel 8 blade template based demo project reflecting advance features of a single vendor ecommerce platform. Build with love and open source for developers.
 
-1. Bootstrap 4.6
+1. Bootstrap 5.0
 2. laravel/breeze
 3. laravel/sanctums
 4. Sweet Alert 2.0
