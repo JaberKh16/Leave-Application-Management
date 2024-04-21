@@ -22,6 +22,9 @@
                         </select>
                     </div>
                 </div>
+                @if ($errors->has('leave_type'))
+                    <span class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('leave_type')}}</span>
+                @endif
             
                 {{-- Start Date --}}
                 <div class="form-group row mb-4">
@@ -33,6 +36,9 @@
                         </div>
                     </div>
                 </div>
+                @if ($errors->has('start_date'))
+                    <span class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('start_date')}}</span>
+                @endif
                 {{-- End Date --}}
                 <div class="form-group row mb-4">
                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">End Date</label>
@@ -43,12 +49,18 @@
                         </div>
                     </div>
                 </div>
+                @if ($errors->has('end_date'))
+                    <span class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('end_date')}}</span>
+                @endif
                 <div class="form-group row mb-4">
                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Reason</label>
                     <div class="col-sm-12 col-md-7">
                         <textarea class="summernote-simple" style="display: none;" name="reason_leave"></textarea>
                     </div>
                 </div>
+                @if ($errors->has('reason_leave'))
+                    <span class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('reason_leave')}}</span>
+                @endif
 
                 <div class="form-group row mb-4">
                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>

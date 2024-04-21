@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
 <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-    <a href="#">Dashboard</a>
+    <a href="/admin/dashboard">Dashboard</a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
     <a href="index.html">St</a>

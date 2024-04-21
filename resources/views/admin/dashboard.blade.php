@@ -24,7 +24,7 @@
       </div>
       <div class="card-wrap">
         <div class="card-header">
-          <h4>Total Active Users</h4>
+          <h4>Total Approved Users</h4>
         </div>
         <div class="card-body">
           {{ $user_active_records }}
@@ -39,7 +39,7 @@
       </div>
       <div class="card-wrap">
         <div class="card-header">
-          <h4>Total Inctive Users</h4>
+          <h4>Total Pending Users</h4>
         </div>
         <div class="card-body">
           {{ $user_inactive_records }}
