@@ -13,14 +13,23 @@ class AdminController extends Controller
         $count_records = $this->total_counts();
         $user_records = $count_records[0];
         $leave_records = $count_records[1];
-        return view('admin.dashboard', compact('user_records', 'leave_records'));
+        $user_active_records = $count_records[2];
+        $user_inactive_records = $count_records[3];
+        $leave_approve_records = $count_records[4];
+        $leave_reject_records = $count_records[5];
+        return view('admin.dashboard', compact('user_records', 'leave_records', 'user_active_records',
+        'user_inactive_records', 'leave_approve_records', 'leave_reject_records'));
     }
 
     public function total_counts()
     {
         $user_records = DB::table('users')->select('*')->count();
         $leave_records = DB::table('leaves')->select('*')->count();
-        $count_records = [ $user_records, $leave_records ];
+        $user_active_records = DB::table('users')->select('*')->where('register_status', '=', 'active')->count();
+        $user_inactive_records = DB::table('users')->select('*')->where('register_status', '!=', 'active')->count();
+        $leave_approve_records = DB::table('leaves')->select('*')->where('review_status', '=', 'active')->count();
+        $leave_reject_records = DB::table('leaves')->select('*')->where('review_status', '!=', 'active')->count();
+        $count_records = [ $user_records, $leave_records, $user_active_records, $user_inactive_records, $leave_approve_records, $leave_reject_records];
         return $count_records;
     }
 
