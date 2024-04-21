@@ -39,8 +39,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 
-// Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'role:admin'])->name('admin.dashboard');
-
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('user/management/records', [AdminController::class, 'user_manage'])->name('admin.user-role');
