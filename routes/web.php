@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\LeaveController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,7 +43,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    
+    Route::get('user/management/records', [AdminController::class, 'user_manage'])->name('admin.user-role');
+    Route::get('user/leave/manage/records', [AdminController::class, 'leave_manage'])->name('admin.user-leave');
+    Route::get('user/leave/manage/records/update-status/{table}/{id}/{value}', [AdminController::class, 'update_leave_status'])->name("update-status");
     
 });
 

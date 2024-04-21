@@ -2,17 +2,25 @@
 
 @section('content')
 
-  @if (session()->has('success'))
-        @php
-            $msg = session()->get('success', 'default');
-        @endphp
-        <div class="alert alert-primary p-3">{{ $msg }}</div>
-    @elseif (session()->has('error'))
-        @php
-            $msg = session()->get('error', 'default');
-        @endphp
-        <div class="alert alert-primary p-3">{{ $msg }}</div>
-    @endif
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (session()->has('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ session('success') }}',
+        });
+    </script>
+@elseif (session()->has('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: '{{ session('error') }}',
+        });
+    </script>
+@endif
+
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -41,7 +49,7 @@
                                     <td>{{ $record->end_date }}</td>
                                     <td>{{ $record->reason_leave }}</td>
                                     <td><span class="badge badge-success">{{ $record->review_status }}</span></td>
-                                    <td>{{ $record->comments }}</td>
+                                    {{-- <td>{{ $record->comments }}</td> --}}
                                     {{-- <td><a href="#" class="btn btn-secondary">Detail</a></td> --}}
                                 </tr>
                             @endforeach
