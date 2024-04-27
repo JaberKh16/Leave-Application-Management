@@ -49,7 +49,7 @@ class LeaveController extends Controller
             'user_id' => request()->user()->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'review_status' => 'inactive',
+            'review_status' => 'pending',
         ]);
 
         if($store_status){
@@ -95,7 +95,7 @@ class LeaveController extends Controller
                 'end_date' => $request->end_date,
                 'reason_leave' => $request->reason_leave,
                 'updated_at' => Carbon::now(),
-                'review_status' => 'inactive',
+                'review_status' => 'pending',
             ]);
 
   

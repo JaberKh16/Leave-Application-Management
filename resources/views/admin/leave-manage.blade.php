@@ -52,17 +52,17 @@
                                 <td>{{ $record->end_date }}</td>
                                 <td>{{ strip_tags($record->reason_leave) }}</td>
                                 <td>
-                                    @if ($record->review_status === 'active')
+                                    @if ($record->review_status === 'approved')
                                         <span class="badge badge-success pt-2 pb-2 ps-4 pe-4">{{ $record->review_status }}</span>
                                     @else
                                     <span class="badge badge-danger pt-2 pb-2 ps-4 pe-4">{{ $record->review_status }}</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($record->review_status === 'active')
-                                        <a href="{{ route('update-status', ['leaves', $record->id, 'inactive']) }}" type="button" class="btn btn-warning text-white">Reject</a>
+                                    @if ($record->review_status === 'approved')
+                                        <a href="{{ route('update-status', ['leaves', $record->id, 'pending']) }}" type="button" class="btn btn-warning text-white">Reject</a>
                                     @else
-                                        <a href="{{ route('update-status', ['leaves', $record->id, 'active']) }}" type="button" class="btn btn-primary text-white">Approve</a>
+                                        <a href="{{ route('update-status', ['leaves', $record->id, 'approved']) }}" type="button" class="btn btn-primary text-white">Approve</a>
                                     @endif
                                 </td>
                             </tr>

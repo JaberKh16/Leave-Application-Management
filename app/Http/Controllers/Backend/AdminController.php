@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Mail\ApprovalMail;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -42,10 +44,10 @@ class AdminController extends Controller
         $leave_records = DB::table('leaves')->select('*')->where('review_status', '!=', 'active')->get();
 
         // extracting user IDs from leave records
-        $userIds = $leave_records->pluck('user_id')->toArray();
+        $user_ids = $leave_records->pluck('user_id')->toArray();
 
         // fetch users corresponding to these user IDs
-        $users = DB::table('users')->whereIn('id', $userIds)->get();
+        $users = DB::table('users')->whereIn('id', $user_ids)->get();
         return view('admin.leave-manage', [
             'leave_records' => $leave_records,
             'users' => $users,
@@ -60,13 +62,37 @@ class AdminController extends Controller
         
         $update = DB::table($table)->where('id', $id)->update($fields);
         if ($update != null) {
-            $action = ($value == 'active') ? 'Approved' : 'Rejected';
+            $action = ($value == 'approved') ? 'Approved' : 'Rejected';
             Log::info($update);
+            
+            // send mail
+            $this->send_leave_status_mail();
             return redirect()->back()->with('success',"Record has been successfully -" . $action);
         } else {
             return redirect()->back()->with('error',"Something went wrong, please try again");
         }
     }
+
+    public function send_leave_status_mail()
+    {
+        $leave_records = DB::table('leaves')->where('review_status', '!=', 'approved')->get();
+
+        $users = DB::table('users')
+                    ->whereIn('id', $leave_records->pluck('user_id'))
+                    ->get();
+                    
+
+        $mail_message = [
+            'subject' => 'Leave Application Approval',
+            'body' => 'Leave Approval is considered for approval',
+        ];
+   
+        foreach ($users as $user) {
+            // send email 
+            Mail::to($user->email)->send(new ApprovalMail($user, $mail_message));
+        }
+    }
+
 
     public function update_user_status($table, $id, $value)
     {
@@ -74,11 +100,34 @@ class AdminController extends Controller
         
         $update = DB::table($table)->where('id', $id)->update($fields);
         if ($update != null) {
-            $action = ($value == 'active') ? 'Approved' : 'Rejected';
+            $action = ($value == 'approved') ? 'Approved' : 'Rejected';
             Log::info($update);
+            // send mail
+            $this->send_user_status_mail();
             return redirect()->back()->with('success',"Record has been successfully -" . $action);
         } else {
             return redirect()->back()->with('error',"Something went wrong, please try again");
         }
     }
+
+    public function send_user_status_mail()
+    {
+        $leave_records = DB::table('leaves')->where('review_status', '!=', 'approved')->get();
+
+        $users = DB::table('users')
+                    ->whereIn('id', $leave_records->pluck('user_id'))
+                    ->get();
+                    
+
+        $mail_message = [
+            'subject' => 'User Activation Approval',
+            'body' => 'User Registered is considered for approval',
+        ];
+   
+        foreach ($users as $user) {
+            // send email 
+            Mail::to($user->email)->send(new ApprovalMail($user, $mail_message));
+        }
+    }
+
 }

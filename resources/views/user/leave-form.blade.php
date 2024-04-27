@@ -31,7 +31,6 @@
                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Start Date</label>
                     <div class="col-sm-12 col-md-7">
                         <div class="form-group">
-                            <label>Date Time Picker</label>
                             <input type="text" class="form-control datetimepicker" name="start_date">
                         </div>
                     </div>
@@ -44,7 +43,6 @@
                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">End Date</label>
                     <div class="col-sm-12 col-md-7">
                         <div class="form-group">
-                            <label>Date Time Picker</label>
                             <input type="text" class="form-control datetimepicker" name="end_date">
                         </div>
                     </div>

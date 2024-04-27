@@ -43,10 +43,8 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>{{ config('app.name', 'Leave Application Project') }}</title>
-
   {{-- css files  --}}
   @include('user.includes.css-files')
-<!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -55,7 +53,7 @@
 
   gtag('config', 'UA-94034622-3');
 </script>
-<!-- /END GA --></head>
+</head>
 
 <body>
   <div id="app">

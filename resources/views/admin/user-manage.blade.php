@@ -45,17 +45,17 @@
                                 <td>{{ $record->fullname }}</td>
                                 <td>{{ $record->email }}</td>
                                 <td>
-                                    @if ($record->register_status === 'active')
+                                    @if ($record->register_status === 'approved')
                                         <span class="badge badge-success pt-2 pb-2 ps-4 pe-4">{{ $record->register_status }}</span>
                                     @else
                                     <span class="badge badge-danger pt-2 pb-2 ps-4 pe-4">{{ $record->register_status }}</span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($record->register_status === 'active')
-                                        <a href="{{ route('update-user-status', ['users', $record->id, 'inactive']) }}" type="button" class="btn btn-warning text-white">Reject</a>
+                                    @if ($record->register_status === 'approved')
+                                        <a href="{{ route('update-user-status', ['users', $record->id, 'pending']) }}" type="button" class="btn btn-warning text-white">Reject</a>
                                     @else
-                                        <a href="{{ route('update-user-status', ['users', $record->id, 'active']) }}" type="button" class="btn btn-primary text-white">Approve</a>
+                                        <a href="{{ route('update-user-status', ['users', $record->id, 'approved']) }}" type="button" class="btn btn-primary text-white">Approve</a>
                                     @endif
                                 </td>
                             </tr>
