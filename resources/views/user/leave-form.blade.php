@@ -1,7 +1,24 @@
 @extends('layouts.app')
 @section('content')
     
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (session()->has('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ session('success') }}',
+        });
+    </script>
+@elseif (session()->has('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: '{{ session('error') }}',
+        });
+    </script>
+@endif
 <div class="row">
     <div class="col-12">
     <div class="card">
@@ -20,11 +37,12 @@
                             <option value="Sick">Sick Leave</option>
                             <option value="Emergency">Emergency Leave</option>
                         </select>
+                        @if ($errors->has('leave_type'))
+                            <div class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('leave_type')}}</div>
+                        @endif
                     </div>
                 </div>
-                @if ($errors->has('leave_type'))
-                    <span class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('leave_type')}}</span>
-                @endif
+               
             
                 {{-- Start Date --}}
                 <div class="form-group row mb-4">
@@ -33,11 +51,12 @@
                         <div class="form-group">
                             <input type="text" class="form-control datetimepicker" name="start_date">
                         </div>
+                        @if ($errors->has('start_date'))
+                            <div class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('start_date')}}</div>
+                        @endif
                     </div>
                 </div>
-                @if ($errors->has('start_date'))
-                    <span class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('start_date')}}</span>
-                @endif
+               
                 {{-- End Date --}}
                 <div class="form-group row mb-4">
                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">End Date</label>
@@ -45,20 +64,22 @@
                         <div class="form-group">
                             <input type="text" class="form-control datetimepicker" name="end_date">
                         </div>
+                        @if ($errors->has('end_date'))
+                            <div class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('end_date')}}</div>
+                        @endif
                     </div>
                 </div>
-                @if ($errors->has('end_date'))
-                    <span class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('end_date')}}</span>
-                @endif
+                
                 <div class="form-group row mb-4">
                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Reason</label>
                     <div class="col-sm-12 col-md-7">
                         <textarea class="summernote-simple" style="display: none;" name="reason_leave"></textarea>
+                        @if ($errors->has('reason_leave'))
+                            <div class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('reason_leave')}}</div>
+                        @endif
                     </div>
                 </div>
-                @if ($errors->has('reason_leave'))
-                    <span class="text-danger font-weight-bolder d-block mb-2">{{ $errors->first('reason_leave')}}</span>
-                @endif
+                
 
                 <div class="form-group row mb-4">
                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>

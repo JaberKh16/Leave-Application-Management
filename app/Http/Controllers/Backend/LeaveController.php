@@ -33,30 +33,41 @@ class LeaveController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'leave_type' => ['required', 'string', 'max:25'],
-            'start_date' => ['required', 'string', 'max:25'],
-            'end_date' => ['required', 'string', 'max:25'],
-            'reason_leave' => ['required', 'string', 'max:500'],
-        ]);
-
+        $user_records = DB::table('users')->select('register_status')->where('register_status', '!=', 'approved')->pluck('register_status');
+        // dd($user_records[0]);
         
-        $store_status = DB::table('leaves')->insert([
-            'leave_type' => $request->leave_type,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'reason_leave' => $request->reason_leave,
-            'user_id' => request()->user()->id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-            'review_status' => 'pending',
-        ]);
+        
+        if($user_records[0] == 'approved'){
 
-        if($store_status){
-            return redirect()->route('user.leave-records')->with('success', 'Leave application submitted.');
+            $validate_status = $request->validate([
+                'leave_type' => ['required', 'string', 'max:25'],
+                'start_date' => ['required', 'string', 'max:25'],
+                'end_date' => ['required', 'string', 'max:25'],
+                'reason_leave' => ['required', 'string', 'max:500'],
+            ]);
+            if($validate_status == true){
+                $store_status = DB::table('leaves')->insert([
+                    'leave_type' => $request->leave_type,
+                    'start_date' => $request->start_date,
+                    'end_date' => $request->end_date,
+                    'reason_leave' => $request->reason_leave,
+                    'user_id' => request()->user()->id,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                    'review_status' => 'pending',
+                ]);
+
+                if($store_status){
+                    return redirect()->route('user.leave-records')->with('success', 'Leave application submitted.');
+                }else{
+                    return redirect()->route('user.leave-records')->with('error', 'Leave application submitted failed.');
+                }
+            }
         }else{
-            return redirect()->route('user.leave-records')->with('error', 'Leave application submitted failed.');
+            return redirect()->route('user.leave-form')->with('error', 'Can not submit, wait for admin approval for pending status.');
         }
+
+      
     }
 
     /**
