@@ -21,6 +21,13 @@ class LeaveController extends Controller
         return view('user.leave-record', compact('all_records'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('user.leave-form');
+    }
 
     /**
      * Store a newly created resource in storage.
