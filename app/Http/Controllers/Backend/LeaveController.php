@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Backend\Leave;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class LeaveController extends Controller
@@ -33,19 +34,18 @@ class LeaveController extends Controller
      */
     public function store(Request $request)
     {
-        $user_records = DB::table('users')->select('register_status')->where('register_status', '!=', 'approved')->pluck('register_status');
-        // dd($user_records[0]);
-        
-        
-        if($user_records[0] == 'approved'){
+       
+        $user = User::find(request()->user()->id);
 
+        if ($user->register_status != 'pending') {
             $validate_status = $request->validate([
                 'leave_type' => ['required', 'string', 'max:25'],
                 'start_date' => ['required', 'string', 'max:25'],
                 'end_date' => ['required', 'string', 'max:25'],
                 'reason_leave' => ['required', 'string', 'max:500'],
             ]);
-            if($validate_status == true){
+            
+            if ($validate_status) {
                 $store_status = DB::table('leaves')->insert([
                     'leave_type' => $request->leave_type,
                     'start_date' => $request->start_date,
@@ -57,18 +57,17 @@ class LeaveController extends Controller
                     'review_status' => 'pending',
                 ]);
 
-                if($store_status){
+                if ($store_status) {
                     return redirect()->route('user.leave-records')->with('success', 'Leave application submitted.');
-                }else{
-                    return redirect()->route('user.leave-records')->with('error', 'Leave application submitted failed.');
+                } else {
+                    return redirect()->route('user.leave-records')->with('error', 'Leave application submission failed.');
                 }
             }
-        }else{
-            return redirect()->route('user.leave-form')->with('error', 'Can not submit, wait for admin approval for pending status.');
+        } else {
+            return redirect()->route('user.leave-form')->with('error', 'Cannot submit. Please wait for admin approval for pending status.');
         }
-
-      
     }
+
 
     /**
      * Display the specified resource.
