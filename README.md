@@ -19,9 +19,9 @@ It is a Laravel 10 blade template based demo project reflecting features of a le
 6. Datatables
 
 ## Getting Started Step by Step
-
-1. In your root folder, clone the project file using git clone https://github.com/JaberKh16/Leave-Application-Management.git
-2. Open terminal (bash/cmd). Then go to project folder using command
+1. Go to the branch - project_branch
+2. In your root folder, clone the project file using git clone https://github.com/JaberKh16/Leave-Application-Management.git
+3. Open terminal (bash/cmd). Then go to project folder using command
 
 ```sh
 cd Leave-Application-Project
