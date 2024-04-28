@@ -19,7 +19,7 @@ It is a Laravel 10 blade template based demo project reflecting features of a le
 6. Datatables
 
 ## Getting Started Step by Step
-1. Go to the branch - project_branch
+1. Go to the branch - **project_branch**
 2. In your root folder, clone the project file using git clone https://github.com/JaberKh16/Leave-Application-Management.git
 3. Open terminal (bash/cmd). Then go to project folder using command
 
@@ -27,13 +27,13 @@ It is a Laravel 10 blade template based demo project reflecting features of a le
 cd Leave-Application-Project
 ```
 
-3. Then install required files and libraries using
+4. Then install required files and libraries using
 
 ```sh
 composer install
 ```
 
-4. Then create a .env file and generate key for this project using command
+5. Then create a .env file and generate key for this project using command
 
 ```sh
 cp .env.example .env
@@ -41,7 +41,7 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-5. Then compile all CSS & JS files together using this command
+6. Then compile all CSS & JS files together using this command
 
 ```sh
 npm install && npm run dev
@@ -53,8 +53,8 @@ or
 yarn install && yarn run dev
 ```
 
-6. Create a database in MYSQL and connect it with your project via updating .env file.
-7. After connecting the db with project, then run command
+7. Create a database in MYSQL and connect it with your project via updating .env file.
+8. After connecting the db with project, then run command
 
 ```sh
 php artisan db:seed
